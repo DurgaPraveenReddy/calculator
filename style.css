@@ -1,0 +1,33 @@
+*{
+    box-sizing: border-box;
+}
+
+#container {
+    height: 700px;
+    width: 500px;
+}
+
+.display {
+    border: solid 2px lightskyblue;
+    padding: 10px;
+}
+
+#buttons {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    padding: 5px;
+    border: solid 2px black;
+}
+
+.button-row {
+    display: flex;
+    flex-grow: 1;
+    width: 100%;
+    column-gap: 5px; 
+}
+
+.button-row button {
+    flex-grow: 1;
+    padding: 20px;
+}
