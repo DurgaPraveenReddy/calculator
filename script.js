@@ -26,6 +26,9 @@ function operate(operand1, operator, operand2) {
         result = multiplication(operand1, operand2);
     }
     else {
+        if (operand2 === 0) {
+            return "Can't do that";
+        }
         result = division(operand1, operand2);
     }
     return result;
@@ -60,11 +63,18 @@ function handleInput(input) {
         display.textContent = display.textContent.slice(0, -1);
     } // If an operator is clicked, re-enable decimal for the next number
     else if (['+', '-', '*', '/'].includes(input)) {
-        decimalBtn.disabled = false;
-        shouldResetDisplay = false;
-        opString += input;
-        display.textContent += input;
-        delBtn.disabled = false;
+        // Preventing the user from performing calculations on the "Can't do that" string
+        if (opString === "Can't do that") {
+            opString = '';
+            display.textContent = '';
+        }
+        else {
+            decimalBtn.disabled = false;
+            shouldResetDisplay = false;
+            opString += input;
+            display.textContent += input;
+            delBtn.disabled = false;
+        }
     }
     else if (input === '.') {
         if (!decimalBtn.disabled) {
@@ -143,7 +153,12 @@ function handleopString(opString) {
     }
 
     // Final result is the only item left in the valueStack
-    const finalResult = valueStack.pop();
+    let finalResult = valueStack.pop();
+
+    // If the result is a number (not "Can't do that"), round it to 8 decimal places
+    if (typeof finalResult === 'number') {
+        finalResult = Math.round(finalResult * 100000000) / 100000000;
+    }
     display.textContent = finalResult;
     return finalResult;
 }

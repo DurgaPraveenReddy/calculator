@@ -1,33 +1,133 @@
-*{
+/* General Reset */
+* {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-#container {
-    height: 700px;
-    width: 500px;
-}
-
-.display {
-    border: solid 2px lightskyblue;
-    padding: 10px;
-}
-
-#buttons {
+body {
+    background-color: #e0e5ec; /* Soft gray for neumorphism */
     display: flex;
-    flex-direction: column;
-    row-gap: 5px;
-    padding: 5px;
-    border: solid 2px black;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
+/* Main Container */
+#container {
+    background-color: #e0e5ec;
+    padding: 25px;
+    border-radius: 30px;
+    box-shadow: 20px 20px 60px #bec3c9, 
+                -20px -20px 60px #ffffff;
+    width: 350px;
+}
+
+/* Display Area */
+.display {
+    background-color: #e0e5ec;
+    height: 70px; /* Slightly shorter to fit text */
+    width: 100%;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 15px;
+    box-shadow: inset 5px 5px 10px #bec3c9, 
+                inset -5px -5px 10px #ffffff;
+}
+
+#display {
+    font-family: 'Courier New', Courier, monospace; /* Digital look */
+    font-size: 1.8rem;
+    color: #3d444d;
+}
+
+/* Button Rows */
 .button-row {
     display: flex;
-    flex-grow: 1;
-    width: 100%;
-    column-gap: 5px; 
+    justify-content: space-between;
+    margin-bottom: 15px;
 }
 
-.button-row button {
-    flex-grow: 1;
-    padding: 20px;
+/* Common Button Styles */
+button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    background-color: #e0e5ec;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 6px 6px 12px #bec3c9, 
+                -6px -6px 12px #ffffff;
+}
+
+/* Button Press Effect */
+button:active {
+    box-shadow: inset 4px 4px 8px #bec3c9, 
+                inset -4px -4px 8px #ffffff;
+    transform: scale(0.98);
+}
+
+/* Operator Buttons Color */
+button:nth-child(4), button:last-child {
+    color: #ff8c00; /* Orange for operators */
+}
+
+/* Special ID Buttons */
+#decimal, #del {
+    width: 48%; /* Make bottom row buttons wider */
+    border-radius: 15px;
+}
+
+#del {
+    color: #d9534f; /* Red for delete */
+}
+
+button:hover {
+    color: #000;
+}
+
+/* Disabled State Styling */
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none;
+    background: #d1d9e6;
+}
+
+/* Branding Styles */
+.brand-header h1 {
+    font-size: 1.5rem;
+    color: #7a828e;
+    text-align: center;
+    margin-bottom: 15px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    /* This makes it look engraved */
+    text-shadow: 1px 1px 1px #ffffff, -1px -1px 1px #bec3c9;
+}
+
+.brand-footer {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.brand-footer p {
+    font-size: 0.7rem;
+    color: #9baacf;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.brand-footer span {
+    font-weight: 800;
+    color: #7a828e;
 }
