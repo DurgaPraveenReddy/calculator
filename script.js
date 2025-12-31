@@ -34,7 +34,7 @@ function operate(operand1, operator, operand2) {
     return result;
 }
 
-
+const displayContainer = document.querySelector('.display');
 const display = document.querySelector('#display');
 const decimalBtn = document.querySelector('#decimal');
 const delBtn = document.querySelector('#del');
@@ -96,6 +96,8 @@ function handleInput(input) {
         display.textContent += input;
         delBtn.disabled = false;
     }
+    // Anchors the view to the newest digits entered
+    displayContainer.scrollLeft = displayContainer.scrollWidth;
 }
 
 // Click Event Listener

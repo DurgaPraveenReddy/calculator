@@ -25,24 +25,62 @@ body {
 }
 
 /* Display Area */
+
+/* The Outer Display Container */
 .display {
     background-color: #e0e5ec;
-    height: 70px; /* Slightly shorter to fit text */
+    height: 70px;
     width: 100%;
     margin-bottom: 25px;
     border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding: 0 15px;
+    padding: 0 15px; /* Side padding for the text */
+    
+    /* Neumorphic Sunken Effect */
     box-shadow: inset 5px 5px 10px #bec3c9, 
                 inset -5px -5px 10px #ffffff;
+    
+    /* Scroll Logic: Essential for handling long numbers */
+    display: block;        /* Changed from flex to block to allow scrolling */
+    overflow-x: auto;      /* Enable horizontal scroll */
+    overflow-y: hidden;    /* Hide vertical scroll */
+    scroll-behavior: smooth;
+    white-space: nowrap;   /* Force text to stay on one line */
 }
 
+/* The Text Span Inside */
 #display {
-    font-family: 'Courier New', Courier, monospace; /* Digital look */
+    font-family: 'Courier New', Courier, monospace;
     font-size: 1.8rem;
     color: #3d444d;
+    
+    display: block;        /* Fill the container width */
+    text-align: right;     /* Keep numbers on the right side */
+    min-width: 100%;       /* Force it to at least match container width */
+    line-height: 80px;     /* Vertically centers the text (match container height) */
+}
+
+/* Scrollbar Styling (Only visible on hover) */
+
+/* Set height and initial transparency */
+.display::-webkit-scrollbar {
+    height: 5px;
+}
+
+.display::-webkit-scrollbar-track {
+    background: transparent;
+    margin: 0 10px;
+}
+
+.display::-webkit-scrollbar-thumb {
+    background: transparent; /* Invisible by default */
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+/* Show the scrollbar thumb only when hovering over the display box */
+.display:hover::-webkit-scrollbar-thumb {
+    background: #bec3c9; 
+    box-shadow: inset 1px 1px 2px #ffffff;
 }
 
 /* Button Rows */
